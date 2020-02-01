@@ -5,7 +5,7 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour {
 
     public PickupObject IObject = null;
-    public static bool isPickedUp { get; set; } = false;
+    public bool isPickedUp { get; set; } = false;
 
     private Collider2D collider;
     private Rigidbody2D rb;
