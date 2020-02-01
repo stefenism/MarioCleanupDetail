@@ -27,17 +27,18 @@ public class playerState : MonoBehaviour {
     }
 
     public void pickup(PickupObject newPickup){
-        print("inside pickup with: " + newPickup);
         float yOffset = newPickup.getColliderHeight();
+        print("yoffset is: " + yOffset);
         foreach(PickupObject obj in carriedPickups){
+            print("obj.name in moving up: " + obj.gameObject.name);
             Vector3 newPosition = obj.gameObject.transform.position;
             newPosition.y += yOffset;
             obj.transform.position = newPosition;
         }
         addPickup(newPickup);
         newPickup.nullifyGravity();
-        newPickup.transform.parent.position = carryPosition.position;
-        newPickup.transform.parent.transform.parent = this.transform;
+        newPickup.transform.position = carryPosition.position;
+        newPickup.transform.parent = this.transform;
     }
 
     public void setCurrentPotentialPickup(PickupObject newPickup){
@@ -53,13 +54,13 @@ public class playerState : MonoBehaviour {
     }
 
     private void OnTriggerEnter2D(Collider2D collider) {
-        if(collider.gameObject.TryGetComponent(out PickupObject pickupObject)){
+        if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
             setCurrentPotentialPickup(pickupObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collider) {
-        if(collider.gameObject.TryGetComponent(out PickupObject pickupObject)){
+        if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
             clearCurrentPotentialPickup(pickupObject);
         }
     }
