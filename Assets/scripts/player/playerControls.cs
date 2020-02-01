@@ -88,10 +88,9 @@ public class playerControls : MonoBehaviour {
 		}
 
 
-		if(state.currentPotentialPickup != null){
+		if(state.currentPotentialPickups.Count != 0){
 			if(Input.GetButtonDown(ProjectConstants.PICKUP_BUTTON)){
-				print("picking up boss: " + state.currentPotentialPickup);
-				state.pickup(state.currentPotentialPickup);
+				state.pickup(state.currentPotentialPickups[0]);
 			}
 		}
 		if(state.currentInteractableObject != null){
@@ -113,8 +112,6 @@ public class playerControls : MonoBehaviour {
     private void checkRun(){
 
         float runDir = (horMov != 0) ? Mathf.Sign(horMov) : 0;
-
-        print("runDir: " + runDir);
 
         float modifier = (runDir == 0) ? runDrag : runAccel;
 
