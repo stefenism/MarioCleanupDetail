@@ -12,6 +12,7 @@ public class playerState : MonoBehaviour {
 
     private List<PickupObject> carriedPickups = new List<PickupObject>();
     public PickupObject currentPotentialPickup = null;
+    public InteractableObject currentInteractableObject = null;
 
     public Transform carryPosition;
 
@@ -41,6 +42,16 @@ public class playerState : MonoBehaviour {
         newPickup.transform.parent = this.transform;
     }
 
+    public void interact(){
+        if(currentInteractableObject != null){
+            if(currentInteractableObject.isInteracting){
+                if(currentInteractableObject.TryGetComponent(out FillableBlock fillBlock)){
+                    print("Interacted with fillable");
+                }
+            } // else hasn't initally interacted
+        } // else no object to interact with?
+    }
+
     public void setCurrentPotentialPickup(PickupObject newPickup){
         if(currentPotentialPickup == null){
             currentPotentialPickup = newPickup;
@@ -53,15 +64,43 @@ public class playerState : MonoBehaviour {
         }
     }
 
+    public void setCurrentInteractableObject(InteractableObject newInteractable){
+        if(currentInteractableObject == null){
+            currentInteractableObject = newInteractable;
+        }
+    }
+
+    public void clearCurrentInteractableObject(InteractableObject oldInteractable){
+        if(currentInteractableObject != null){
+            currentInteractableObject.isInteracting = false;
+            currentInteractableObject = null;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collider) {
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
             setCurrentPotentialPickup(pickupObject);
+        }        
+        if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject interactableObject)){
+            setCurrentInteractableObject(interactableObject);
         }
+
     }
 
     private void OnTriggerExit2D(Collider2D collider) {
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
             clearCurrentPotentialPickup(pickupObject);
         }
+        if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject interactableObject)){
+            clearCurrentInteractableObject(interactableObject);
+        }
+    }
+
+    public List<PickupObject> getCarryList(){
+        return carriedPickups;
+    }
+    
+    public void removeBottomPickupObject(){
+        carriedPickups.RemoveAt(0);
     }
 }

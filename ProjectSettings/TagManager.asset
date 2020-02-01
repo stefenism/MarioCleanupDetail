@@ -16,13 +16,13 @@ TagManager:
   - Ground
   - Pickup
   - Player
-  - 
+  - Interact
   - 
   - 
   - 
   - 
   - PickupCollider
-  - 
+  - InteractCollider
   - 
   - 
   - 

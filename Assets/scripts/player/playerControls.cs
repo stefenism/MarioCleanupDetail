@@ -94,6 +94,16 @@ public class playerControls : MonoBehaviour {
 				state.pickup(state.currentPotentialPickup);
 			}
 		}
+		if(state.currentInteractableObject != null){
+			if(!state.currentInteractableObject.isInteracting){ //Hasn't interacted with this yet
+				if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
+					print("Interacted with object");
+					state.currentInteractableObject.InteractedFirst();
+					state.currentInteractableObject.isInteracting = true;	
+				}
+			}
+			
+		}
 		// anim.SetFloat("speed", Mathf.Abs(rb.velocity.x));
 		// anim.SetBool("grounded", grounded);
 		// anim.SetFloat("vspeed", rb.velocity.y);
