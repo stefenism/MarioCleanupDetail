@@ -5,13 +5,14 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour {
 
     public PickupObject IObject = null;
-    public static bool isPickedUp { get; set; } = false;
+    public bool isPickedUp = false;
+    public playerState player;
 
-    private Collider2D collider;
+    private BoxCollider2D collider;
     private Rigidbody2D rb;
 
     public virtual void Awake() {
-        collider = GetComponent<Collider2D>();
+        collider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -19,22 +20,47 @@ public class PickupObject : MonoBehaviour {
     }
 
     public float getColliderHeight(){
-        float ySize = collider.bounds.extents.y * 2;
-        print("collider bounds: " + collider.bounds.extents.y);
-        print("ysize in get collider height: " + ySize);
-        return ySize;
+        return collider.size.y;
+    }
+
+    public void setCarrier(playerState newPlayer){
+        player = newPlayer;
+        isPickedUp = true;
+    }
+
+    public void removeCarrier(){
+        isPickedUp = false;
+        player = null;
+        transform.parent = null;
     }
 
     public void nullifyGravity(){
-        rb.gravityScale = 0;
-        rb.simulated = false;
+        Destroy(rb);
     }
 
     public void addGravity(){
-        rb.gravityScale = 1;
-        rb.simulated = true;
+       rb = gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
     }
 
+    public void dropTopPickup(){
+        removeCarrier();
+        addGravity();
+    }
+
+    public void startDropTop(){
+        if(isPickedUp){
+            if(player.isPlayerCarrying()){
+                player.setPlayerDropping();
+                player.dropTop(this);
+            }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision) {
+        if(collision.collider.gameObject.layer == LayerMask.NameToLayer("Ground")){
+            startDropTop();
+        }
+    }
 
 
 }
