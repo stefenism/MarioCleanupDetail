@@ -9,22 +9,22 @@ public class GameManager : MonoBehaviour {
     public playerState player = null;
 
     //Game completion objects
-    public static int blocksReplaced { get; set; } = 0;
-    public static int totalBlocksToReplace { get; set; } = 9999;
-    public static int blocksFilled { get; set; } = 0;
-    public static int totalBlocksToFill { get; set; } = 9999;
-    public static bool flagLowered { get; set; } = false;
-    public static bool placedMario { get; set; } = false;
+    public int blocksReplaced { get; set; } = 0;
+    public int totalBlocksToReplace { get; set; } = 9999;
+    public int blocksFilled { get; set; } = 0;
+    public int totalBlocksToFill { get; set; } = 9999;
+    public bool flagLowered { get; set; } = false;
+    public bool placedMario { get; set; } = false;
 
     //IF TIME TODO
-    public static int mariosCleanedUp { get; set; } = 0;
-    public static int totalMariosToCleanUp { get; set; } = 999;
-    public static bool placedInvisableBlock { get; set; } = false;
-    public static int enimesPlaced { get; set; } = 0;
-    public static int enimesToPlace { get; set; } = 999;
+    public int mariosCleanedUp { get; set; } = 0;
+    public int totalMariosToCleanUp { get; set; } = 999;
+    public bool placedInvisableBlock { get; set; } = false;
+    public int enimesPlaced { get; set; } = 0;
+    public int enimesToPlace { get; set; } = 999;
 
     //TIMER
-    public static float timeRemaining { get; set; } = 500f;
+    public float timeRemaining { get; set; } = 500f;
 
     void Awake() {
         if (gameManager == null) {

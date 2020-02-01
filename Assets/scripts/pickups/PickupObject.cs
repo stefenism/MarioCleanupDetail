@@ -5,8 +5,10 @@ using UnityEngine;
 public class PickupObject : MonoBehaviour {
 
     public PickupObject IObject = null;
+
     public bool isPickedUp = false;
     public playerState player;
+
 
     private BoxCollider2D collider;
     private Rigidbody2D rb;
