@@ -12,23 +12,27 @@ public class PickupObject : MonoBehaviour {
 
     public virtual void Awake() {
         collider = GetComponent<Collider2D>();
-        rb = transform.parent.GetComponent<Rigidbody2D>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     public virtual void Interacted() {
     }
 
     public float getColliderHeight(){
-        float ySize = collider.bounds.extents.y + transform.position.y;
+        float ySize = collider.bounds.extents.y * 2;
+        print("collider bounds: " + collider.bounds.extents.y);
+        print("ysize in get collider height: " + ySize);
         return ySize;
     }
 
     public void nullifyGravity(){
         rb.gravityScale = 0;
+        rb.simulated = false;
     }
 
     public void addGravity(){
         rb.gravityScale = 1;
+        rb.simulated = true;
     }
 
 
