@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class playerControls : MonoBehaviour {
     
+	private playerState state;
+
     private Rigidbody2D rb;
     private Collider2D collider;
 
@@ -35,7 +37,8 @@ public class playerControls : MonoBehaviour {
 
     private void Awake() {
         rb = GetComponent<Rigidbody2D>();
-        collider = GetComponent<Collider2D>();        
+        collider = GetComponent<Collider2D>();
+		state = GetComponent<playerState>();
     }
 
     private void Update() {
@@ -83,7 +86,14 @@ public class playerControls : MonoBehaviour {
 		{			
 			Flip();
 		}
-			
+
+
+		if(state.currentPotentialPickup != null){
+			if(Input.GetButtonDown(ProjectConstants.PICKUP_BUTTON)){
+				print("picking up boss: " + state.currentPotentialPickup);
+				state.pickup(state.currentPotentialPickup);
+			}
+		}
 		// anim.SetFloat("speed", Mathf.Abs(rb.velocity.x));
 		// anim.SetBool("grounded", grounded);
 		// anim.SetFloat("vspeed", rb.velocity.y);

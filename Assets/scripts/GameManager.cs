@@ -6,6 +6,8 @@ public class GameManager : MonoBehaviour {
 
     public static GameManager gameManager = null;
 
+    public playerState player = null;
+
     //Game completion objects
     public static int blocksReplaced { get; set; } = 0;
     public static int totalBlocksToReplace { get; set; } = 9999;
@@ -24,7 +26,7 @@ public class GameManager : MonoBehaviour {
     //TIMER
     public static float timeRemaining { get; set; } = 500f;
 
-    void Awoke() {
+    void Awake() {
         if (gameManager == null) {
             gameManager = this;
         } else if (gameManager != this) {
