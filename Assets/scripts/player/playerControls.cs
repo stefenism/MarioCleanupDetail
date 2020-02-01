@@ -88,11 +88,20 @@ public class playerControls : MonoBehaviour {
 		}
 
 
-		if(state.currentPotentialPickup != null){
+		if(state.currentPotentialPickups.Count != 0){
 			if(Input.GetButtonDown(ProjectConstants.PICKUP_BUTTON)){
-				print("picking up boss: " + state.currentPotentialPickup);
-				state.pickup(state.currentPotentialPickup);
+				state.pickup(state.currentPotentialPickups[0]);
 			}
+		}
+		if(state.currentInteractableObject != null){
+			if(!state.currentInteractableObject.isInteracting){ //Hasn't interacted with this yet
+				if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
+					print("Interacted with object");
+					state.currentInteractableObject.InteractedFirst();
+					state.currentInteractableObject.isInteracting = true;	
+				}
+			}
+			
 		}
 		// anim.SetFloat("speed", Mathf.Abs(rb.velocity.x));
 		// anim.SetBool("grounded", grounded);
@@ -103,8 +112,6 @@ public class playerControls : MonoBehaviour {
     private void checkRun(){
 
         float runDir = (horMov != 0) ? Mathf.Sign(horMov) : 0;
-
-        print("runDir: " + runDir);
 
         float modifier = (runDir == 0) ? runDrag : runAccel;
 
