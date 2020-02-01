@@ -14,14 +14,14 @@ TagManager:
   - 
   - 
   - Ground
+  - Pickup
+  - Player
   - 
   - 
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - PickupCollider
   - 
   - 
   - 
