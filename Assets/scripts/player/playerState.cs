@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class playerState : MonoBehaviour {
     
-    private enum PlayerState{
+    public enum PlayerState{
         DEFAULT,
         CARRYING,
-        INTERACTING
+        INTERACTING,
+        DROPPING
     }
 
+    public PlayerState playersState = PlayerState.DEFAULT;
+
     private List<PickupObject> carriedPickups = new List<PickupObject>();
-    public PickupObject currentPotentialPickup = null;
+    public List<PickupObject> currentPotentialPickups = new List<PickupObject>();
 
     public Transform carryPosition;
 
@@ -22,46 +25,72 @@ public class playerState : MonoBehaviour {
 
     public void addPickup(PickupObject newPickup){
         if(!carriedPickups.Contains(newPickup)){
-            carriedPickups.Add(newPickup);
+            carriedPickups.Insert(0, newPickup);
         }
     }
 
     public void pickup(PickupObject newPickup){
+        if(playersState != PlayerState.CARRYING){
+            setPlayerCarrying();
+        }
+        newPickup.transform.rotation = Quaternion.identity;
         float yOffset = newPickup.getColliderHeight();
-        print("yoffset is: " + yOffset);
         foreach(PickupObject obj in carriedPickups){
-            print("obj.name in moving up: " + obj.gameObject.name);
             Vector3 newPosition = obj.gameObject.transform.position;
             newPosition.y += yOffset;
             obj.transform.position = newPosition;
         }
+        newPickup.setCarrier(this);
         addPickup(newPickup);
+        removeCurrentPotentialPickup(newPickup);
         newPickup.nullifyGravity();
         newPickup.transform.position = carryPosition.position;
         newPickup.transform.parent = this.transform;
     }
 
-    public void setCurrentPotentialPickup(PickupObject newPickup){
-        if(currentPotentialPickup == null){
-            currentPotentialPickup = newPickup;
+    public void dropTop(PickupObject newPickup){
+        if(carriedPickups.Contains(newPickup)){
+            int index = carriedPickups.IndexOf(newPickup);
+            for(int i = carriedPickups.Count - 1; i >= index; i--){
+                print("current drop name: " + carriedPickups[i].gameObject.name);
+                carriedPickups[i].dropTopPickup();
+                carriedPickups.Remove(carriedPickups[i]);
+            }
+            carriedPickups.Remove(newPickup);
+        }
+        setPlayerCarrying();
+    }
+
+    public void addCurrentPotentialPickup(PickupObject newPickup){
+        if(!currentPotentialPickups.Contains(newPickup)){
+            // print("we in here: " + newPickup.gameObject.name);
+            currentPotentialPickups.Insert(0,newPickup);
         }
     }
 
-    public void clearCurrentPotentialPickup(PickupObject oldPickup){
-        if(currentPotentialPickup != null){
-            currentPotentialPickup = null;
+    public void removeCurrentPotentialPickup(PickupObject oldPickup){
+        if(currentPotentialPickups.Contains(oldPickup)){
+            currentPotentialPickups.Remove(oldPickup);
         }
     }
+
+    public bool isPlayerCarrying(){return playersState == PlayerState.CARRYING;}
+
+    public void setPlayerCarrying(){playersState = PlayerState.CARRYING;}
+    public void setPlayerDropping(){playersState = PlayerState.DROPPING;}
 
     private void OnTriggerEnter2D(Collider2D collider) {
+        print("enter collider.gameobject.name: " + collider.transform.parent.gameObject.name);
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
-            setCurrentPotentialPickup(pickupObject);
+            addCurrentPotentialPickup(pickupObject);
         }
+        print("blah: " + collider.transform.parent.gameObject.name);
     }
 
     private void OnTriggerExit2D(Collider2D collider) {
+        print("exit collider.gameobject.name: " + collider.transform.parent.gameObject.name);
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
-            clearCurrentPotentialPickup(pickupObject);
+            removeCurrentPotentialPickup(pickupObject);
         }
     }
 }
