@@ -29,8 +29,8 @@ public class InteractableObject : MonoBehaviour {
         rb.gravityScale = 1;
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.tryGetComponent(out playerControl player)){
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.Collider2D.tryGetComponent(out playerControls player)){
             Debug.Log("Player hit");
         }
     }
