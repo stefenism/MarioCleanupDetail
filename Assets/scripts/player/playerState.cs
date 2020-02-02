@@ -50,16 +50,6 @@ public class playerState : MonoBehaviour {
         newPickup.transform.parent = this.transform;
     }
 
-    public void interact(){
-        if(currentInteractableObject != null){
-            if(currentInteractableObject.isInteracting){
-                if(currentInteractableObject.TryGetComponent(out FillableBlock fillBlock)){
-                    print("Interacted with fillable");
-                }
-            } // else hasn't initally interacted
-        } // else no object to interact with?
-    }
-
     public void setCurrentPotentialPickup(PickupObject newPickup){
         if(currentPotentialPickup == null){
             currentPotentialPickup = newPickup;
@@ -76,6 +66,21 @@ public class playerState : MonoBehaviour {
             carriedPickups.Remove(newPickup);
         }
         setPlayerCarrying();
+    }
+
+    public void drop(){
+        if(carriedPickups.Count > 0){
+            PickupObject toDrop = carriedPickups[0];
+            float dropDistance = toDrop.getColliderHeight();
+            carriedPickups[0].dropTopPickup();
+            carriedPickups.Remove(toDrop);
+            setPlayerCarrying();
+            foreach(PickupObject obj in carriedPickups){
+                Vector3 newPosition = obj.gameObject.transform.position;
+                newPosition.y -= dropDistance;
+                obj.transform.position = newPosition;
+            }
+        }
     }
 
     public void addCurrentPotentialPickup(PickupObject newPickup){
@@ -109,25 +114,14 @@ public class playerState : MonoBehaviour {
     public void setPlayerDropping(){playersState = PlayerState.DROPPING;}
 
     private void OnTriggerEnter2D(Collider2D collider) {
-        print("enter collider.gameobject.name: " + collider.transform.parent.gameObject.name);
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
            addCurrentPotentialPickup(pickupObject);
-        }      
-        if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject interactableObject)){
-            setCurrentInteractableObject(interactableObject);
         }
-
-          
-        print("blah: " + collider.transform.parent.gameObject.name);
     }
 
     private void OnTriggerExit2D(Collider2D collider) {
-        print("exit collider.gameobject.name: " + collider.transform.parent.gameObject.name);
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
             removeCurrentPotentialPickup(pickupObject);
-        }
-        if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject interactableObject)){
-            clearCurrentInteractableObject(interactableObject);
         }
     }
 

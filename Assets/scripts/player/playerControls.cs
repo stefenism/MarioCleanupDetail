@@ -33,6 +33,8 @@ public class playerControls : MonoBehaviour {
 	private float jumpDuration = 0;
 	public float jumpTime = .3f;
 
+	public bool handledDrop = false;
+
     private Vector2 platformMovementVector;
 
     private void Awake() {
@@ -99,14 +101,29 @@ public class playerControls : MonoBehaviour {
 					print("Interacted with object");
 					state.currentInteractableObject.InteractedFirst();
 					state.currentInteractableObject.isInteracting = true;	
+				} 
+			}
+		}
+		if(state.getCarryList().Count > 0 ){
+			if(Input.GetButtonDown(ProjectConstants.DROP_BUTTON)){
+				if(state.currentInteractableObject != null && state.currentInteractableObject.isInteracting){
+					if(state.getCarryList().Count > 0){
+						if(state.currentInteractableObject.TryGetComponent(out FillableBlock fill)){
+							print("Dropped while interacting with fillable");
+							handledDrop = true;
+						} else {
+							print("No Cast");
+						}
+					}
+				} else if(!handledDrop){
+					state.drop();
 				}
 			}
-			
 		}
 		// anim.SetFloat("speed", Mathf.Abs(rb.velocity.x));
 		// anim.SetBool("grounded", grounded);
 		// anim.SetFloat("vspeed", rb.velocity.y);
-
+		handledDrop = false;
 	}
 
     private void checkRun(){

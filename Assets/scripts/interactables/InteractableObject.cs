@@ -31,4 +31,16 @@ public class InteractableObject : MonoBehaviour {
         rb.gravityScale = 1;
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if(other.gameObject.TryGetComponent(out playerControls player)){
+            GameManager.gameManager.player.setCurrentInteractableObject(this);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if(other.gameObject.TryGetComponent(out playerControls player)){
+            GameManager.gameManager.player.clearCurrentInteractableObject(this);
+        }    
+    }
+
 }
