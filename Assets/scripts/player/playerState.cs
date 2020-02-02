@@ -22,10 +22,13 @@ public class playerState : MonoBehaviour {
     public List<PickupObject> currentPotentialPickups = new List<PickupObject>();
 
     public Transform carryPosition;
+    public GameObject interactIcon;
 
     private void Start() {
         GameManager.gameManager.player = this;
         carryPosition = transform.GetChild(0);
+        interactIcon = transform.GetChild(1).gameObject;
+        interactIcon.SetActive(false);
         anim = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -139,6 +142,7 @@ public class playerState : MonoBehaviour {
         
         if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject io)){
            setCurrentInteractableObject(io);
+           interactIcon.SetActive(true);
         }
         }catch{print("Ooops all berrys");}
     }
@@ -150,6 +154,7 @@ public class playerState : MonoBehaviour {
         }
         if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject io)){
             clearCurrentInteractableObject(io);
+            interactIcon.SetActive(false);
         }
         }catch{print("Please ignore, nothing to see here.");}
     }
