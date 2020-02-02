@@ -87,6 +87,7 @@ public class playerState : MonoBehaviour {
         if(!currentPotentialPickups.Contains(newPickup)){
             // print("we in here: " + newPickup.gameObject.name);
             currentPotentialPickups.Insert(0,newPickup);
+            newPickup.highlighted = true;
         }
     }
 
@@ -105,6 +106,7 @@ public class playerState : MonoBehaviour {
     public void removeCurrentPotentialPickup(PickupObject oldPickup){
         if(currentPotentialPickups.Contains(oldPickup)){
             currentPotentialPickups.Remove(oldPickup);
+            oldPickup.highlighted = false;
         }
     }
 

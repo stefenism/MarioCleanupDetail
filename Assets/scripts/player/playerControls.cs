@@ -80,7 +80,7 @@ public class playerControls : MonoBehaviour {
 		
 		JumpButton();
 
-		if(rb.velocity.x > 0 && !facingRight)//if(horMov > 0 && !facingRight)
+		if(rb.velocity.x >= 0 && !facingRight)//if(horMov > 0 && !facingRight)
 		{			
 			Flip();
 		}
@@ -191,6 +191,10 @@ public class playerControls : MonoBehaviour {
 				}
 
 			}
+		}
+
+		if(Input.GetButtonDown(ProjectConstants.JUMP_BUTTON) && jumpAllowed){
+			audioManager.audioDaddy.playSfx(audioManager.audioDaddy.jumpSfx);
 		}
 
 
