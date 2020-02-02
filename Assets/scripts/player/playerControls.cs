@@ -126,7 +126,10 @@ public class playerControls : MonoBehaviour {
 							deleteDrop();
 				
 							handledDrop = true;
-						} else {
+						} else if (state.currentInteractableObject.TryGetComponent(out MarioPlacer fill)){
+							state.currentInteractableObject.Interacted();
+							deleteDrop();
+						}else {
 							state.drop();
 						}
 					}
