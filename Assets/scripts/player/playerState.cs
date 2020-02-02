@@ -13,6 +13,9 @@ public class playerState : MonoBehaviour {
 
     public PlayerState playersState = PlayerState.DEFAULT;
 
+    private Animator anim;
+    private Rigidbody2D rb = null;
+
     private List<PickupObject> carriedPickups = new List<PickupObject>();
     public PickupObject currentPotentialPickup = null;
     public InteractableObject currentInteractableObject = null;
@@ -23,6 +26,18 @@ public class playerState : MonoBehaviour {
     private void Start() {
         GameManager.gameManager.player = this;
         carryPosition = transform.GetChild(0);
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update() {
+        checkAnims();
+    }
+
+    void checkAnims(){
+        anim.SetBool("carrying", isPlayerCarrying());
+        anim.SetFloat("speed", Mathf.Abs(rb.velocity.x));
+        anim.SetFloat("vspeed", Mathf.Abs(rb.velocity.y));
     }
 
     public void addPickup(PickupObject newPickup){

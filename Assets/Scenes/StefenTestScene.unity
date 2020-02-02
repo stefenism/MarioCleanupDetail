@@ -1134,7 +1134,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947416870}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.1192, y: 0, z: 0}
+  m_LocalPosition: {x: 0.696, y: 0.122, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1543276118}
@@ -1305,10 +1305,11 @@ GameObject:
   - component: {fileID: 1543276118}
   - component: {fileID: 1543276117}
   - component: {fileID: 1543276115}
-  - component: {fileID: 1543276116}
   - component: {fileID: 1543276119}
   - component: {fileID: 1543276114}
   - component: {fileID: 1543276120}
+  - component: {fileID: 1543276121}
+  - component: {fileID: 1543276116}
   m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
@@ -1377,7 +1378,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 21300000, guid: 01bd38647c70d04429d430c92ef125d5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1401,18 +1402,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0014626496, y: -0.000000059604645}
+  m_Offset: {x: -0.0033947825, y: -0.07124281}
   m_SpriteTilingProperty:
-    border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
+    border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.16, y: 0.16}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 0.16, y: 0.16}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.13367233, y: 0.13076666}
+  m_Size: {x: 0.38214815, y: 0.8575144}
   m_EdgeRadius: 0
 --- !u!50 &1543276117
 Rigidbody2D:
@@ -1444,7 +1445,7 @@ Transform:
   m_GameObject: {fileID: 1543276113}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.49, y: -3.66, z: 0}
-  m_LocalScale: {x: 8, y: 8, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 947416871}
   m_Father: {fileID: 0}
@@ -1465,7 +1466,7 @@ MonoBehaviour:
   groundDistance: 0.75
   groundLayer:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 131328
   width: 0
   height: 0
 --- !u!114 &1543276120
@@ -1485,6 +1486,25 @@ MonoBehaviour:
   currentInteractableObject: {fileID: 0}
   currentPotentialPickups: []
   carryPosition: {fileID: 0}
+--- !u!95 &1543276121
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543276113}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 158a4acb159e3374c81a0564b6aa9cf4, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1597808261
 GameObject:
   m_ObjectHideFlags: 0
