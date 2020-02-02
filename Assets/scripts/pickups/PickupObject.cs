@@ -18,7 +18,11 @@ public class PickupObject : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public virtual void Interacted() {
+    public virtual void pickupObject(playerState player, Vector3 newPosition) {
+        setCarrier(player);
+        nullifyGravity();
+        transform.position = newPosition;
+        transform.parent = player.transform;
     }
 
     public float getColliderHeight(){

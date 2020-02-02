@@ -42,12 +42,13 @@ public class playerState : MonoBehaviour {
             newPosition.y += yOffset;
             obj.transform.position = newPosition;
         }
-        newPickup.setCarrier(this);
+        newPickup.pickupObject(this,carryPosition.position);
+        // newPickup.setCarrier(this);
         addPickup(newPickup);
         removeCurrentPotentialPickup(newPickup);
-        newPickup.nullifyGravity();
-        newPickup.transform.position = carryPosition.position;
-        newPickup.transform.parent = this.transform;
+        // newPickup.nullifyGravity();
+        // newPickup.transform.position = carryPosition.position;
+        // newPickup.transform.parent = this.transform;
     }
 
     public void setCurrentPotentialPickup(PickupObject newPickup){
