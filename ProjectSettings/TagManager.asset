@@ -23,7 +23,7 @@ TagManager:
   - 
   - PickupCollider
   - InteractCollider
-  - 
+  - PickedUpColliders
   - 
   - 
   - 

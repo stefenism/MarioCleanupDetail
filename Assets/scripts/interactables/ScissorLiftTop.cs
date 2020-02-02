@@ -10,10 +10,22 @@ public class ScissorLiftTop : InteractableObject
 
     private Vector3 startPos;
 
+    private Animator anim;
+    public bool highlighted;
+
 
      public override void Awake() {
         base.Awake();
-        startPos = this.transform.position;  
+        startPos = this.transform.position;
+        anim = GetComponent<Animator>();
+    }
+
+    private void Update() {
+        checkAnims();
+    }
+
+    void checkAnims(){
+        anim.SetBool("highlighted", highlighted);
     }
 
    public override void Interacted(){
