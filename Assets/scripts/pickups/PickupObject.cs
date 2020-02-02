@@ -22,7 +22,7 @@ public class PickupObject : MonoBehaviour {
         anim = GetComponent<Animator>();
     }
 
-    private void Update() {
+    public virtual void Update() {
         checkAnims();
     }
 
@@ -35,6 +35,7 @@ public class PickupObject : MonoBehaviour {
         nullifyGravity();
         transform.position = newPosition;
         transform.parent = player.transform;
+        gameObject.layer = LayerMask.NameToLayer("PickedUpColliders");
     }
 
     public float getColliderHeight(){
@@ -63,6 +64,7 @@ public class PickupObject : MonoBehaviour {
     public virtual void dropTopPickup(){
         removeCarrier();
         addGravity();
+        gameObject.layer = LayerMask.NameToLayer("PickupCollider");
     }
 
     public void startDropTop(){

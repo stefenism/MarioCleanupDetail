@@ -19,6 +19,15 @@ public class ScissorLift : PickupObject
         prefabs = new List<GameObject>();
     }
 
+    public override void Update() {
+        setChildrenHighlighted();
+    }
+
+    void setChildrenHighlighted(){
+        top.highlighted = highlighted;
+        bottom.highlighted = highlighted;
+    }
+
     public void addStructure(){
        GameObject clone = Instantiate(structurePrefab, new Vector3(bottom.transform.position.x, bottom.transform.position.y + prefabs.Count + .5f, 0), Quaternion.identity);
        clone.transform.parent = transform;

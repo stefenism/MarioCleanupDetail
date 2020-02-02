@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: scissorTop
+  m_Controller: {fileID: 9100000, guid: 1eb7342a8a3ad6d46ad51b556b2905e1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: f8ed9740393faa144b1deae70ec1a550, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: f69220180a5cd2d448cb8426e8c92ff8, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 1223fdeaf23600748ac2dc241850e59b, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7376a0c79b1834e4fbd4dc588aff1647, type: 2}
