@@ -36,13 +36,17 @@ public class ScissorLift : PickupObject
 
    public override void pickupObject(playerState player, Vector3 newPosition){
        base.pickupObject(player, newPosition);
+       top.collider.enabled = false;
        top.transform.GetChild(0).gameObject.SetActive(false);
+       bottom.collider.enabled = false;
        bottom.transform.GetChild(0).gameObject.SetActive(false);
    }
 
    public override void dropTopPickup(){
        base.dropTopPickup();
+       top.collider.enabled = true;
        top.transform.GetChild(0).gameObject.SetActive(true);
+       bottom.collider.enabled = true;
        bottom.transform.GetChild(0).gameObject.SetActive(true);
    }
 
