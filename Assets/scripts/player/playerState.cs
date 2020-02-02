@@ -35,6 +35,10 @@ public class playerState : MonoBehaviour {
 
     private void Update() {
         checkAnims();
+
+        if(carriedPickups.Count == 0){
+            playersState = PlayerState.DEFAULT;
+        }
     }
 
     void checkAnims(){
