@@ -106,7 +106,6 @@ public class playerControls : MonoBehaviour {
 					} else {
 						state.currentInteractableObject.InteractedFirst();
 						state.currentInteractableObject.isInteracting = true;		
-						print("FIRST");
 					}			
 					
 				}

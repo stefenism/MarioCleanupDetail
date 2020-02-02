@@ -13,16 +13,34 @@ public class playerState : MonoBehaviour {
 
     public PlayerState playersState = PlayerState.DEFAULT;
 
+    private Animator anim;
+    private Rigidbody2D rb = null;
+
     private List<PickupObject> carriedPickups = new List<PickupObject>();
     public PickupObject currentPotentialPickup = null;
     public InteractableObject currentInteractableObject = null;
     public List<PickupObject> currentPotentialPickups = new List<PickupObject>();
 
     public Transform carryPosition;
+    public GameObject interactIcon;
 
     private void Start() {
         GameManager.gameManager.player = this;
         carryPosition = transform.GetChild(0);
+        interactIcon = transform.GetChild(1).gameObject;
+        interactIcon.SetActive(false);
+        anim = GetComponent<Animator>();
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    private void Update() {
+        checkAnims();
+    }
+
+    void checkAnims(){
+        anim.SetBool("carrying", isPlayerCarrying());
+        anim.SetFloat("speed", Mathf.Abs(rb.velocity.x));
+        anim.SetFloat("vspeed", Mathf.Abs(rb.velocity.y));
     }
 
     public void addPickup(PickupObject newPickup){
@@ -124,6 +142,7 @@ public class playerState : MonoBehaviour {
         
         if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject io)){
            setCurrentInteractableObject(io);
+           interactIcon.SetActive(true);
         }
         }catch{print("Ooops all berrys");}
     }
@@ -135,6 +154,7 @@ public class playerState : MonoBehaviour {
         }
         if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject io)){
             clearCurrentInteractableObject(io);
+            interactIcon.SetActive(false);
         }
         }catch{print("Please ignore, nothing to see here.");}
     }
