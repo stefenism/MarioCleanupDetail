@@ -7,7 +7,7 @@ public class typewriter : MonoBehaviour {
     
     public TextMeshProUGUI typeWriter;
 
-    public float textSpeed = 0.1f;
+    public float textSpeed = 0.005f;
     public float refreshDelay = .75f;
     public int maxTextCount = 40;
     public string fullText = "";
@@ -38,6 +38,7 @@ public class typewriter : MonoBehaviour {
         for(int i = 0; i <= fullText.Length; i++){
             currentText = newString.Substring(0, j);
             typeWriter.SetText(currentText);
+            audioManager.audioDaddy.playSfx(audioManager.audioDaddy.typeWriterSfx);
             if(j >= maxTextCount){
                 j = 0;
                 yield return new WaitForSeconds(refreshDelay);
