@@ -9,7 +9,8 @@ public class ScissorLiftBottom : InteractableObject
         private Animator anim;
         public bool highlighted;
 
-        private void Awake() {
+        public override void Awake() {
+            base.Awake();
             anim = GetComponent<Animator>();
         }
 
