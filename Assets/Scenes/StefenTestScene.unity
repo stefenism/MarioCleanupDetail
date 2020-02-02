@@ -456,7 +456,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 65295103}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36aeb2ff59506634bafc4b968d12e99c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1980,7 +1980,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1142385479}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36aeb2ff59506634bafc4b968d12e99c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -2555,6 +2555,7 @@ MonoBehaviour:
   gravityDropModifier: 2
   jumpForce: 3
   jumpTime: 0.006
+  handledDrop: 0
 --- !u!212 &1543276115
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -2698,6 +2699,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playersState: 0
+  currentPotentialPickup: {fileID: 0}
+  currentInteractableObject: {fileID: 0}
   currentPotentialPickups: []
   carryPosition: {fileID: 0}
 --- !u!1 &1566378518
@@ -3875,7 +3878,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2116476016}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36aeb2ff59506634bafc4b968d12e99c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -3983,7 +3986,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2139866526}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36aeb2ff59506634bafc4b968d12e99c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -4091,7 +4094,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 2140190197}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 36aeb2ff59506634bafc4b968d12e99c, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
