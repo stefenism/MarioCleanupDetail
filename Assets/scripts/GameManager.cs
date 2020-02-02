@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour {
 
     //Game completion objects
     public int blocksReplaced { get; set; } = 0;
-    public int totalBlocksToReplace { get; set; } = 9999;
+    public int totalBlocksToReplace { get; set; } = 0;
     public int blocksFilled { get; set; } = 0;
-    public int totalBlocksToFill { get; set; } = 9999;
+    public int totalBlocksToFill { get; set; } = 0;
     public bool flagLowered { get; set; } = false;
     public bool placedMario { get; set; } = false;
 
