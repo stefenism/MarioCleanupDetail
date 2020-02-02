@@ -58,7 +58,9 @@ public class PickupObject : MonoBehaviour {
     }
 
     public void addGravity(){
+       transform.rotation = Quaternion.identity;
        rb = gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
+       rb.constraints = RigidbodyConstraints2D.FreezeRotation;
     }
 
     public virtual void dropTopPickup(){

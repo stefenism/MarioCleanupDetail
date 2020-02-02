@@ -14,9 +14,15 @@ public class Flag : InteractableObject
 
     public override void Interacted(){
         Vector3 currentPos = this.transform.GetChild(1).gameObject.transform.position;
-        if(dropDistance > 0f){
-            
+        if(dropDistance > 0f){      
             dropDistance -= 1f;
+            currentPos.y -= 1f;
+            this.transform.GetChild(1).gameObject.transform.position = currentPos;
+            //Play sounds
+            if(dropDistance == 1f){
+                //Finished Play sounds
+                GameManager.gameManager.flagLowered = true;
+            }
         }
     }
 
