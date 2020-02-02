@@ -8,6 +8,8 @@ public class FillableBlock : InteractableObject
     public int maxCapacity = 999;
     public bool isOpen {get; set;} = false;
 
+    private Animator anim;
+
     public FillItem fillItem = FillItem.coin;
     public enum FillItem{
         coin = 0,
@@ -18,10 +20,19 @@ public class FillableBlock : InteractableObject
     private void Awake() {
         base.Awake();
         items = new List<object>();
+        anim = GetComponent<Animator>();
     }
 
     private void Start() {
         GameManager.gameManager.totalBlocksToFill += maxCapacity;
+    }
+
+    private void Update() {
+        checkAnims();
+    }
+
+    void checkAnims(){
+        anim.SetBool("full", items.Count == maxCapacity);
     }
 
     public override bool Interacted(){

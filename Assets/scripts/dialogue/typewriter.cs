@@ -17,11 +17,11 @@ public class typewriter : MonoBehaviour {
         typeWriter = GetComponent<TextMeshProUGUI>();
     }
 
-    private void Update() {
-        if(Input.GetKeyDown(KeyCode.H)){
-            startTypeWriter("here I am, rock you like a hurricane");
-        }
-    }
+    // private void Update() {
+    //     if(Input.GetKeyDown(KeyCode.H)){
+    //         startTypeWriter("here I am, rock you like a hurricane");
+    //     }
+    // }
 
     private void Start() {
         GameManager.setTypewriter(this);
