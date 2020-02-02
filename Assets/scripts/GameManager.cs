@@ -39,8 +39,9 @@ public class GameManager : MonoBehaviour {
     }
 
     static public void setTypewriter(typewriter newTypeWriter) {
-        // gameManager.screenText = newTypeWriter;
+        gameManager.screenText = newTypeWriter;
     }
+
     // Start is called before the first frame update
     void Start() {
 
