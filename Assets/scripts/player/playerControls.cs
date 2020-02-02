@@ -127,7 +127,7 @@ public class playerControls : MonoBehaviour {
 				
 							handledDrop = true;
 						} else {
-							print("No Cast");
+							state.drop();
 						}
 					}
 				} else if(!handledDrop){
