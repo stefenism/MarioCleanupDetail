@@ -18,4 +18,10 @@ public class cameraConstraintTrigger : MonoBehaviour {
             confiner.m_BoundingShape2D = upperConstraint;
         }
     }
+
+    public void checkIfBelowTrigger(Vector3 playerPosition){
+        if(playerPosition.y < transform.position.y){
+            confiner.m_BoundingShape2D = lowerConstraint;
+        }
+    }
 }
