@@ -48,7 +48,7 @@ public class PickupObject : MonoBehaviour {
        rb = gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
     }
 
-    public void dropTopPickup(){
+    public virtual void dropTopPickup(){
         removeCarrier();
         addGravity();
     }
