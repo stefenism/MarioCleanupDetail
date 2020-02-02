@@ -15,7 +15,7 @@ public class ReplaceableBlock : InteractableObject
          GameManager.gameManager.totalBlocksToReplace++;
     }
 
-    public override void InteractedFirst(){
+    public override bool InteractedFirst(){
         if(!isReplaced){
             if(GameManager.gameManager.player.getCarryList().Count > 0){
                 if(GameManager.gameManager.player.getCarryList()[0].gameObject.TryGetComponent(out ReplaceBlock block)){
@@ -27,9 +27,10 @@ public class ReplaceableBlock : InteractableObject
 
                     //REPLACE SPRITE HERE
 
-                    
+                    return true;
                 }
             }
         }
+        return false;
     }
 }

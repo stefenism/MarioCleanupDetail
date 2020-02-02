@@ -11,7 +11,7 @@ public class GoombaPlacer : InteractableObject
         GameManager.gameManager.enimesToPlace += 1;
     }
 
-   public override void Interacted(){
+   public override bool InteractedFirst(){
        if(!isPlaced){
             if(GameManager.gameManager.player.getCarryList().Count > 0){
                 if(GameManager.gameManager.player.getCarryList()[0].gameObject.TryGetComponent(out Goomba block)){
@@ -22,8 +22,10 @@ public class GoombaPlacer : InteractableObject
                     this.transform.GetChild(0).gameObject.SetActive(false);
 
                     //REPLACE SPRITE HERE
+                    return true;
                 }
             }
         }
+        return false;
    }
 }

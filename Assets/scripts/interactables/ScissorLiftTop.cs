@@ -28,9 +28,10 @@ public class ScissorLiftTop : InteractableObject
         anim.SetBool("highlighted", highlighted);
     }
 
-   public override void Interacted(){
+   public override bool Interacted(){
        positionOffset += 1f;
        updatePosition();
+       return true;
    }
 
    public void updatePosition(){

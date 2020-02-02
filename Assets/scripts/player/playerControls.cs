@@ -98,22 +98,34 @@ public class playerControls : MonoBehaviour {
 		if(state.currentInteractableObject != null){
 			if(!state.currentInteractableObject.isInteracting){ //Hasn't interacted with this yet
 				if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
-					if(state.currentInteractableObject.gameObject.TryGetComponent(out ReplaceableBlock block)){
-						if(state.getCarryList()[0].gameObject.TryGetComponent(out ReplaceBlock carry)){
-							state.currentInteractableObject.InteractedFirst();
+					if(state.currentInteractableObject.gameObject.TryGetComponent(out ReplaceableBlock block)){		
+					}	
+
+				}		
+				           
+            } else {
+				if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
+					if(state.currentInteractableObject.TryGetComponent(out ReplaceableBlock rep)){
+						if(state.currentInteractableObject.InteractedFirst())
 							deleteDrop();
-						}
+					} else if (state.currentInteractableObject.TryGetComponent(out MarioPlacer mp)){
+						if(state.currentInteractableObject.InteractedFirst())
+							deleteDrop();
+					} else if (state.currentInteractableObject.TryGetComponent(out TurtlePlacer tp)){
+						if(state.currentInteractableObject.InteractedFirst())
+							deleteDrop();
+					} else if (state.currentInteractableObject.TryGetComponent(out GoombaPlacer gp)){
+						if(state.currentInteractableObject.InteractedFirst())
+							deleteDrop();
 					} else {
-						state.currentInteractableObject.InteractedFirst();
-						state.currentInteractableObject.isInteracting = true;		
-					}			
-					
+						state.currentInteractableObject.Interacted();
+					}
 				}
-			} else if(!state.currentInteractableObject.TryGetComponent(out FillableBlock block)){
-                if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
-                    state.currentInteractableObject.Interacted();
-                }            
-            }
+			} //else if(!state.currentInteractableObject.TryGetComponent(out FillableBlock block)){
+               // if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
+               // 	 state.currentInteractableObject.Interacted();
+                //} 
+			//}
 		}
 		if(state.getCarryList().Count > 0 ){
 			if(Input.GetButtonDown(ProjectConstants.DROP_BUTTON)){
@@ -126,15 +138,7 @@ public class playerControls : MonoBehaviour {
 							deleteDrop();
 				
 							handledDrop = true;
-						} else if (state.currentInteractableObject.TryGetComponent(out MarioPlacer mp)){
-							state.currentInteractableObject.Interacted();
-							deleteDrop();
-						} else if (state.currentInteractableObject.TryGetComponent(out TurtlePlacer tp)){
-							state.currentInteractableObject.Interacted();
-							deleteDrop();
-						} else if (state.currentInteractableObject.TryGetComponent(out GoombaPlacer gp)){
-							state.currentInteractableObject.Interacted();
-							deleteDrop();
+						
 						}else {
 							state.drop();
 						}

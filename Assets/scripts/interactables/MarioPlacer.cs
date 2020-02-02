@@ -7,7 +7,7 @@ public class MarioPlacer : InteractableObject
     // Start is called before the first frame update
     private bool isPlaced = false;
 
-    public override void Interacted(){
+    public override bool InteractedFirst(){
         if(!isPlaced){
             if(GameManager.gameManager.player.getCarryList().Count > 0){
                 if(GameManager.gameManager.player.getCarryList()[0].gameObject.TryGetComponent(out Mario block)){
@@ -20,9 +20,10 @@ public class MarioPlacer : InteractableObject
                     //REPLACE SPRITE HERE
                     //DO GAME END
 
-                    
+                    return true;
                 }
             }
-        }        
-        }
+        }   
+        return false;     
+    }
 }
