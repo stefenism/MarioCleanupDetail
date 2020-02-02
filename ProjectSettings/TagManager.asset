@@ -24,7 +24,7 @@ TagManager:
   - PickupCollider
   - InteractCollider
   - PickedUpColliders
-  - 
+  - CameraConstraints
   - 
   - 
   - 
