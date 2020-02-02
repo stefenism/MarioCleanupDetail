@@ -165,6 +165,10 @@ public class playerState : MonoBehaviour {
             interactIcon.SetActive(false);
         }
         }catch{print("Please ignore, nothing to see here.");}
+
+        if(collider.gameObject.TryGetComponent(out cameraConstraintTrigger constraintTrigger)){
+            constraintTrigger.checkIfBelowTrigger(transform.position);
+        }
     }
 
     public List<PickupObject> getCarryList(){
