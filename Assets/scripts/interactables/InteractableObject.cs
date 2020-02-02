@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour {
-    
-    private Collider2D collider;
-    private Rigidbody2D rb;
+
+    public BoxCollider2D collider;
+    public Rigidbody2D rb;
     public bool isInteracting {get; set;} = false;
 
     public virtual void Awake() {
-        collider = GetComponent<Collider2D>();
+        collider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
 
@@ -32,13 +32,13 @@ public class InteractableObject : MonoBehaviour {
 
     private void OnTriggerEnter2D(Collider2D other) {
         if(other.gameObject.TryGetComponent(out playerControls player)){
-            GameManager.gameManager.player.setCurrentInteractableObject(this);
+            //GameManager.gameManager.player.setCurrentInteractableObject(this);
         }
     }
 
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.TryGetComponent(out playerControls player)){
-            GameManager.gameManager.player.clearCurrentInteractableObject(this);
+            //GameManager.gameManager.player.clearCurrentInteractableObject(this);
         } 
     }
 
