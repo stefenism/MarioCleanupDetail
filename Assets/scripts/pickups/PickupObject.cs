@@ -18,9 +18,6 @@ public class PickupObject : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public virtual void Interacted() {
-    }
-
     public float getColliderHeight(){
         return collider.size.y;
     }

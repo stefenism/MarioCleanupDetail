@@ -102,6 +102,10 @@ public class playerControls : MonoBehaviour {
 					state.currentInteractableObject.InteractedFirst();
 					state.currentInteractableObject.isInteracting = true;	
 				} 
+			} else if(!state.currentInteractableObject.TryGetComponent(out FillableBlock block)){
+				if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
+					state.currentInteractableObject.Interacted();
+				}			
 			}
 		}
 		if(state.getCarryList().Count > 0 ){

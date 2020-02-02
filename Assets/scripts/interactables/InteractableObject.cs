@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class InteractableObject : MonoBehaviour {
-
-    public InteractableObject IObject = null;
+    
     private Collider2D collider;
     private Rigidbody2D rb;
     public bool isInteracting {get; set;} = false;
@@ -40,7 +39,7 @@ public class InteractableObject : MonoBehaviour {
     private void OnTriggerExit2D(Collider2D other) {
         if(other.gameObject.TryGetComponent(out playerControls player)){
             GameManager.gameManager.player.clearCurrentInteractableObject(this);
-        }    
+        } 
     }
 
 }
