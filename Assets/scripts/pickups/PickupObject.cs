@@ -18,6 +18,13 @@ public class PickupObject : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
+    public virtual void pickupObject(playerState player, Vector3 newPosition) {
+        setCarrier(player);
+        nullifyGravity();
+        transform.position = newPosition;
+        transform.parent = player.transform;
+    }
+
     public float getColliderHeight(){
         return collider.size.y;
     }
@@ -41,7 +48,7 @@ public class PickupObject : MonoBehaviour {
        rb = gameObject.AddComponent(typeof(Rigidbody2D)) as Rigidbody2D;
     }
 
-    public void dropTopPickup(){
+    public virtual void dropTopPickup(){
         removeCarrier();
         addGravity();
     }
