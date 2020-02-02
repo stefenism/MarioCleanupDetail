@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour {
     public static GameManager gameManager = null;
 
     public playerState player = null;
+    public typewriter screenText = null;
 
     //Game completion objects
     public int blocksReplaced { get; set; } = 0;
@@ -37,9 +38,9 @@ public class GameManager : MonoBehaviour {
 
     }
 
-
-
-
+    static public void setTypewriter(typewriter newTypeWriter) {
+        // gameManager.screenText = newTypeWriter;
+    }
     // Start is called before the first frame update
     void Start() {
 
