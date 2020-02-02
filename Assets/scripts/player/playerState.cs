@@ -108,7 +108,7 @@ public class playerState : MonoBehaviour {
     public void setPlayerDropping(){playersState = PlayerState.DROPPING;}
 
     private void OnTriggerEnter2D(Collider2D collider) {
-        print("enter collider.gameobject.name: " + collider.transform.parent.gameObject.name);
+        // print("enter collider.gameobject.name: " + collider.transform.parent.gameObject.name);
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
            addCurrentPotentialPickup(pickupObject);
         }      
@@ -117,11 +117,11 @@ public class playerState : MonoBehaviour {
         //}
 
           
-        print("blah: " + collider.transform.parent.gameObject.name);
+        // print("blah: " + collider.transform.parent.gameObject.name);
     }
 
     private void OnTriggerExit2D(Collider2D collider) {
-        print("exit collider.gameobject.name: " + collider.transform.parent.gameObject.name);
+        // print("exit collider.gameobject.name: " + collider.transform.parent.gameObject.name);
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
             removeCurrentPotentialPickup(pickupObject);
         }
