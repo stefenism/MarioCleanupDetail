@@ -50,16 +50,6 @@ public class playerState : MonoBehaviour {
         newPickup.transform.parent = this.transform;
     }
 
-    public void interact(){
-        if(currentInteractableObject != null){
-            if(currentInteractableObject.isInteracting){
-                if(currentInteractableObject.TryGetComponent(out FillableBlock fillBlock)){
-                    print("Interacted with fillable");
-                }
-            } // else hasn't initally interacted
-        } // else no object to interact with?
-    }
-
     public void setCurrentPotentialPickup(PickupObject newPickup){
         if(currentPotentialPickup == null){
             currentPotentialPickup = newPickup;
@@ -76,6 +66,15 @@ public class playerState : MonoBehaviour {
             carriedPickups.Remove(newPickup);
         }
         setPlayerCarrying();
+    }
+
+    public void drop(){
+        if(carriedPickups.Count > 0){
+            PickupObject toDrop = carriedPickups[0];
+            carriedPickups[0].dropTopPickup();
+            carriedPickups.Remove(toDrop);
+            setPlayerCarrying();
+        }
     }
 
     public void addCurrentPotentialPickup(PickupObject newPickup){
@@ -113,9 +112,9 @@ public class playerState : MonoBehaviour {
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
            addCurrentPotentialPickup(pickupObject);
         }      
-        if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject interactableObject)){
-            setCurrentInteractableObject(interactableObject);
-        }
+        //if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject interactableObject)){
+        //    setCurrentInteractableObject(interactableObject);
+        //}
 
           
         print("blah: " + collider.transform.parent.gameObject.name);
@@ -126,9 +125,18 @@ public class playerState : MonoBehaviour {
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
             removeCurrentPotentialPickup(pickupObject);
         }
-        if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject interactableObject)){
-            clearCurrentInteractableObject(interactableObject);
-        }
+        //if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject interactableObject)){
+        //    print(collider.gameObject.tag);
+        //
+        //    if(collider.transform.IsChildOf(transform)){
+                // This isn't a child of mine, do something
+        //        print("is child collider");
+        //   }
+        //
+        //  clearCurrentInteractableObject(interactableObject);
+        //  print("Left Interactable");
+        //}
+        
     }
 
     public List<PickupObject> getCarryList(){
