@@ -60,7 +60,6 @@ public class playerState : MonoBehaviour {
         if(carriedPickups.Contains(newPickup)){
             int index = carriedPickups.IndexOf(newPickup);
             for(int i = carriedPickups.Count - 1; i >= index; i--){
-                print("current drop name: " + carriedPickups[i].gameObject.name);
                 carriedPickups[i].dropTopPickup();
                 carriedPickups.Remove(carriedPickups[i]);
             }
