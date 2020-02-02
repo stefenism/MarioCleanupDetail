@@ -114,15 +114,27 @@ public class playerState : MonoBehaviour {
     public void setPlayerDropping(){playersState = PlayerState.DROPPING;}
 
     private void OnTriggerEnter2D(Collider2D collider) {
+        print("this.name: " + this.gameObject.name + " collidername: " + collider.gameObject.name);
+        try{
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
            addCurrentPotentialPickup(pickupObject);
         }
+        
+        if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject io)){
+           setCurrentInteractableObject(io);
+        }
+        }catch{print("Ooops all berrys");}
     }
 
     private void OnTriggerExit2D(Collider2D collider) {
+        try{
         if(collider.transform.parent.gameObject.TryGetComponent(out PickupObject pickupObject)){
             removeCurrentPotentialPickup(pickupObject);
         }
+        if(collider.transform.parent.gameObject.TryGetComponent(out InteractableObject io)){
+            clearCurrentInteractableObject(io);
+        }
+        }catch{print("Please ignore, nothing to see here.");}
     }
 
     public List<PickupObject> getCarryList(){

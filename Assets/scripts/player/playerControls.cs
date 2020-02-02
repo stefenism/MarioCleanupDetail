@@ -181,6 +181,10 @@ public class playerControls : MonoBehaviour {
 			}
 		}
 
+		if(Input.GetButtonDown(ProjectConstants.JUMP_BUTTON) && jumpAllowed){
+			audioManager.audioDaddy.playSfx(audioManager.audioDaddy.jumpSfx);
+		}
+
 
 		if(Input.GetButton(ProjectConstants.JUMP_BUTTON) && jumpAllowed)
 		{
