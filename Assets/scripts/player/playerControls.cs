@@ -80,7 +80,7 @@ public class playerControls : MonoBehaviour {
 		
 		JumpButton();
 
-		if(rb.velocity.x > 0 && !facingRight)//if(horMov > 0 && !facingRight)
+		if(rb.velocity.x >= 0 && !facingRight)//if(horMov > 0 && !facingRight)
 		{			
 			Flip();
 		}
