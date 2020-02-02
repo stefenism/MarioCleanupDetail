@@ -22,7 +22,7 @@ public class GameManager : MonoBehaviour {
     public int totalMariosToCleanUp { get; set; } = 999;
     public bool placedInvisableBlock { get; set; } = false;
     public int enimesPlaced { get; set; } = 0;
-    public int enimesToPlace { get; set; } = 999;
+    public int enimesToPlace { get; set; } = 0;
 
     //TIMER
     public float timeRemaining { get; set; } = 500f;

@@ -129,6 +129,12 @@ public class playerControls : MonoBehaviour {
 						} else if (state.currentInteractableObject.TryGetComponent(out MarioPlacer mp)){
 							state.currentInteractableObject.Interacted();
 							deleteDrop();
+						} else if (state.currentInteractableObject.TryGetComponent(out TurtlePlacer mp)){
+							state.currentInteractableObject.Interacted();
+							deleteDrop();
+						} else if (state.currentInteractableObject.TryGetComponent(out GoombaPlacer mp)){
+							state.currentInteractableObject.Interacted();
+							deleteDrop();
 						}else {
 							state.drop();
 						}
