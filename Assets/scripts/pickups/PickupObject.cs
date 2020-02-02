@@ -9,13 +9,25 @@ public class PickupObject : MonoBehaviour {
     public bool isPickedUp = false;
     public playerState player;
 
+    public bool highlighted = false;
+
 
     private BoxCollider2D collider;
     private Rigidbody2D rb;
+    private Animator anim;
 
     public virtual void Awake() {
         collider = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
+    }
+
+    private void Update() {
+        checkAnims();
+    }
+
+    void checkAnims(){
+        anim.SetBool("highlighted", highlighted);
     }
 
     public virtual void pickupObject(playerState player, Vector3 newPosition) {

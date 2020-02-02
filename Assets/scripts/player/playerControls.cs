@@ -80,7 +80,7 @@ public class playerControls : MonoBehaviour {
 		
 		JumpButton();
 
-		if(rb.velocity.x > 0 && !facingRight)//if(horMov > 0 && !facingRight)
+		if(rb.velocity.x >= 0 && !facingRight)//if(horMov > 0 && !facingRight)
 		{			
 			Flip();
 		}
@@ -98,22 +98,34 @@ public class playerControls : MonoBehaviour {
 		if(state.currentInteractableObject != null){
 			if(!state.currentInteractableObject.isInteracting){ //Hasn't interacted with this yet
 				if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
-					print("Interacted with object");
-					state.currentInteractableObject.InteractedFirst();
-					state.currentInteractableObject.isInteracting = true;	
-				} 
+					if(state.currentInteractableObject.gameObject.TryGetComponent(out ReplaceableBlock block)){
+						if(state.getCarryList()[0].gameObject.TryGetComponent(out ReplaceBlock carry)){
+							state.currentInteractableObject.InteractedFirst();
+							deleteDrop();
+						}
+					} else {
+						state.currentInteractableObject.InteractedFirst();
+						state.currentInteractableObject.isInteracting = true;		
+						print("FIRST");
+					}			
+					
+				}
 			} else if(!state.currentInteractableObject.TryGetComponent(out FillableBlock block)){
-				if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
-					state.currentInteractableObject.Interacted();
-				}			
-			}
+                if(Input.GetButtonDown(ProjectConstants.INTERACT_BUTTON)){
+                    state.currentInteractableObject.Interacted();
+                }            
+            }
 		}
 		if(state.getCarryList().Count > 0 ){
 			if(Input.GetButtonDown(ProjectConstants.DROP_BUTTON)){
 				if(state.currentInteractableObject != null && state.currentInteractableObject.isInteracting){
+
 					if(state.getCarryList().Count > 0){
 						if(state.currentInteractableObject.TryGetComponent(out FillableBlock fill)){
-							print("Dropped while interacting with fillable");
+							state.currentInteractableObject.Interacted();
+
+							deleteDrop();
+				
 							handledDrop = true;
 						} else {
 							print("No Cast");
@@ -230,4 +242,18 @@ public class playerControls : MonoBehaviour {
     public Rigidbody2D getRigidBody(){return rb;}
 
     public void setGravityScale(float newScale){rb.gravityScale = newScale;}
+
+	public void deleteDrop(){
+		PickupObject toDrop = state.getCarryList()[0];
+        float dropDistance = toDrop.getColliderHeight();
+		state.getCarryList().Remove(toDrop);
+        Destroy(toDrop.gameObject);	
+        state.setPlayerCarrying();
+							
+		foreach(PickupObject obj in state.getCarryList()){
+            Vector3 newPosition = obj.gameObject.transform.position;
+            newPosition.y -= dropDistance;
+            obj.transform.position = newPosition;
+        }
+	}
 }

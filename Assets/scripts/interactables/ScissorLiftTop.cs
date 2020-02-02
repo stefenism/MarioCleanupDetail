@@ -22,6 +22,9 @@ public class ScissorLiftTop : InteractableObject
    }
 
    public void updatePosition(){
+       if(this.transform.rotation.z != 0){
+           return;
+       }
         Vector3 newPosition = this.transform.position;
         Vector3 oldPos = newPosition;
         Vector3 newPlayerPosition = GameManager.gameManager.player.transform.position;
