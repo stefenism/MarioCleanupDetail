@@ -71,9 +71,15 @@ public class playerState : MonoBehaviour {
     public void drop(){
         if(carriedPickups.Count > 0){
             PickupObject toDrop = carriedPickups[0];
+            float dropDistance = toDrop.getColliderHeight();
             carriedPickups[0].dropTopPickup();
             carriedPickups.Remove(toDrop);
             setPlayerCarrying();
+            foreach(PickupObject obj in carriedPickups){
+                Vector3 newPosition = obj.gameObject.transform.position;
+                newPosition.y -= dropDistance;
+                obj.transform.position = newPosition;
+            }
         }
     }
 
