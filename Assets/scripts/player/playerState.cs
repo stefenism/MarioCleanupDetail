@@ -149,6 +149,10 @@ public class playerState : MonoBehaviour {
            interactIcon.SetActive(true);
         }
         }catch{print("Ooops all berrys");}
+
+        if(collider.gameObject.TryGetComponent(out cameraConstraintTrigger constraintTrigger)){
+            constraintTrigger.changeBoundingVolume();
+        }
     }
 
     private void OnTriggerExit2D(Collider2D collider) {
