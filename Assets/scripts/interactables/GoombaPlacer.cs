@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoombaPlacer : MonoBehaviour
+public class GoombaPlacer : InteractableObject
 {
     private bool isPlaced = false;
 

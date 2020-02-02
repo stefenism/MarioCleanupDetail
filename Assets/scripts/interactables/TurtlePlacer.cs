@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TurtlePlacer : MonoBehaviour
+public class TurtlePlacer : InteractableObject
 {
     private bool isPlaced = false;
 
