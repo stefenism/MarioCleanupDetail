@@ -14,7 +14,6 @@ public class StarFill : InteractableObject
             isFilled = true;
             List<PickupObject> carried = GameManager.gameManager.player.getCarryList();
             if(carried.Count > 0){
-                items.Add(carried[0]);
                 if(carried[0].gameObject.TryGetComponent(out star st)){
                     GameManager.gameManager.blocksFilled += 1;
                     print("Block is full");
