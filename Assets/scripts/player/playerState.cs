@@ -127,10 +127,8 @@ public class playerState : MonoBehaviour {
 
     public void clearCurrentInteractableObject(InteractableObject oldInteractable){
         if(currentInteractableObject != null){
-            if(currentInteractableObject == oldInteractable){
-                currentInteractableObject.isInteracting = false;
-                currentInteractableObject = null;
-            }
+             currentInteractableObject.isInteracting = false;
+             currentInteractableObject = null;
         }
     }
     public void removeCurrentPotentialPickup(PickupObject oldPickup){
