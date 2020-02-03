@@ -48,6 +48,8 @@ public class ScissorLiftTop : InteractableObject
         
         parent.addStructure();
 
+        audioManager.audioDaddy.playSfx(audioManager.audioDaddy.scissorUp);
+
    }
 
    public void resetPosition(){

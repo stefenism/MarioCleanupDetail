@@ -36,7 +36,7 @@ public class audioManager : MonoBehaviour {
     public void playSfx(AudioClip playClip){
         print("Playing");
         if(playClip != null){
-            cameraAudioSource.PlayOneShot(playClip, 0.35f);
+            cameraAudioSource.PlayOneShot(playClip, 1f);
         }
     }
     
