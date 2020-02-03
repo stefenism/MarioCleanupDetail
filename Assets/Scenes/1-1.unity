@@ -9439,6 +9439,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7049051882189945098, guid: 41359b8ba4f478845a7bc2e49b7cec4f,
+        type: 3}
+      propertyPath: m_Text
+      value: You came to work today, that's all we can ask.
+      objectReference: {fileID: 0}
     - target: {fileID: 9073839280168540391, guid: 41359b8ba4f478845a7bc2e49b7cec4f,
         type: 3}
       propertyPath: m_Name
@@ -11218,6 +11223,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoombaVending Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7378122100604221695, guid: 4b7a92e8aa7e1204db6bc620a7b4abaf,
+        type: 3}
+      propertyPath: structurePrefab
+      value: 
+      objectReference: {fileID: 1354325977102281749, guid: c66b1c59bbce806499d38031bf976bbd,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4b7a92e8aa7e1204db6bc620a7b4abaf, type: 3}
 --- !u!1 &616850870
@@ -12647,6 +12658,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: TurtleVending Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 8946494153919039567, guid: 5372ad36644efed439af39d0867ccec6,
+        type: 3}
+      propertyPath: structurePrefab
+      value: 
+      objectReference: {fileID: 6541317528646161743, guid: dd881fd3e8bad964eb882a96553efb8b,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5372ad36644efed439af39d0867ccec6, type: 3}
 --- !u!1 &789844224

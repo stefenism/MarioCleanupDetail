@@ -182,6 +182,7 @@ public class playerState : MonoBehaviour {
     }
 
     public void endGame(){
+        print("we here foo *&*&*&*&*&");
 
         StartCoroutine(fade.fade());
 
@@ -189,10 +190,11 @@ public class playerState : MonoBehaviour {
         double comp = GameManager.gameManager.enimesPlaced + GameManager.gameManager.blocksFilled + GameManager.gameManager.blocksReplaced + (GameManager.gameManager.flagLowered ? 1 : 0) + 1;
         double percent = 0;
         percent = (comp / total) * 100;
+        print("percent: " + percent);
         if(percent < 0){
             percent = 0;
         }
-        txt.text = "Your score: " + percent + "%";
+        txt.text = "Your score: " + percent.ToString() + "%";
     }
 
 }
