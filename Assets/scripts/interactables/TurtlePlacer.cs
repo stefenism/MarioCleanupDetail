@@ -6,9 +6,24 @@ public class TurtlePlacer : InteractableObject
 {
     private bool isPlaced = false;
 
+    private Animator anim;
+    public bool filled = false;
+
     public override void Awake(){
         base.Awake();
+    }
+
+    private void Start() {
         GameManager.gameManager.enimesToPlace += 1;
+        anim = GetComponent<Animator>();
+    }
+
+    private void Update() {
+        checkAnims();
+    }
+
+    void checkAnims(){
+        anim.SetBool("filled", filled);
     }
 
    public override bool InteractedFirst(){
@@ -22,6 +37,7 @@ public class TurtlePlacer : InteractableObject
                     this.transform.GetChild(0).gameObject.SetActive(false);
 
                     //REPLACE SPRITE HERE
+                    filled = true;
                     return true;
                 }
             }

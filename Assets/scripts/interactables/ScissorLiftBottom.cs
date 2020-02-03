@@ -25,6 +25,7 @@ public class ScissorLiftBottom : InteractableObject
         public override bool Interacted(){
             parent.top.positionOffset = 0f;
             parent.top.resetPosition();
+            audioManager.audioDaddy.playSfx(audioManager.audioDaddy.scissorDown);
             return true;
         }
 }
