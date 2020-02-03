@@ -1365,6 +1365,11 @@ PrefabInstance:
       propertyPath: m_Volume
       value: 0.4
       objectReference: {fileID: 0}
+    - target: {fileID: 8370616677228572952, guid: 15a0854f514843946b5f4f3e773573ea,
+        type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8370616677228572953, guid: 15a0854f514843946b5f4f3e773573ea,
         type: 3}
       propertyPath: orthographic size
