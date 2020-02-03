@@ -19,6 +19,7 @@ public class Flag : InteractableObject
             currentPos.y += 1f;
             this.transform.GetChild(1).gameObject.transform.position = currentPos;
             //Play sounds
+            audioManager.audioDaddy.playSfx(audioManager.audioDaddy.flagCrank);
             if(dropDistance == 0f){
                 //Finished Play sounds
                 GameManager.gameManager.flagLowered = true;

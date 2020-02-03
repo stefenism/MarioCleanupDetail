@@ -36,6 +36,7 @@ public class PickupObject : MonoBehaviour {
         transform.position = newPosition;
         transform.parent = player.transform;
         gameObject.layer = LayerMask.NameToLayer("PickedUpColliders");
+        audioManager.audioDaddy.playSfx(audioManager.audioDaddy.pickupSfx);
     }
 
     public float getColliderHeight(){
@@ -67,6 +68,7 @@ public class PickupObject : MonoBehaviour {
         removeCarrier();
         addGravity();
         gameObject.layer = LayerMask.NameToLayer("PickupCollider");
+        audioManager.audioDaddy.playSfx(audioManager.audioDaddy.putDownSfx);
     }
 
     public void startDropTop(){
