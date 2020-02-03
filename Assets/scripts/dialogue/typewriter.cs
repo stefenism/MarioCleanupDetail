@@ -38,7 +38,7 @@ public class typewriter : MonoBehaviour {
         for(int i = 0; i <= fullText.Length; i++){
             currentText = newString.Substring(0, j);
             typeWriter.SetText(currentText);
-            audioManager.audioDaddy.playSfx(audioManager.audioDaddy.typeWriterSfx);
+            //audioManager.audioDaddy.playSfx(audioManager.audioDaddy.typeWriterSfx);
             if(j >= maxTextCount){
                 j = 0;
                 yield return new WaitForSeconds(refreshDelay);
