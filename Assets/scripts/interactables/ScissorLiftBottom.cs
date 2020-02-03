@@ -22,8 +22,9 @@ public class ScissorLiftBottom : InteractableObject
             anim.SetBool("highlighted", highlighted);
         }
 
-        public override void Interacted(){
+        public override bool Interacted(){
             parent.top.positionOffset = 0f;
             parent.top.resetPosition();
+            return true;
         }
 }

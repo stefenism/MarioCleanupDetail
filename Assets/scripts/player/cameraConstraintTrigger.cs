@@ -9,7 +9,6 @@ public class cameraConstraintTrigger : MonoBehaviour {
     public CinemachineConfiner confiner;
 
     public void changeBoundingVolume(){
-        print("triggered");
         confiner.InvalidatePathCache();
         if(confiner.m_BoundingShape2D == upperConstraint){
             confiner.m_BoundingShape2D = lowerConstraint;
@@ -21,6 +20,7 @@ public class cameraConstraintTrigger : MonoBehaviour {
 
     public void checkIfBelowTrigger(Vector3 playerPosition){
         if(playerPosition.y < transform.position.y){
+            confiner.InvalidatePathCache();
             confiner.m_BoundingShape2D = lowerConstraint;
         }
     }

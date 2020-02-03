@@ -6,8 +6,9 @@ public class OpenableBlock : InteractableObject {
 
     public bool isOpen { get; set; } = false;
 
-    public override void Interacted() {
+    public override bool Interacted() {
         isOpen = !isOpen;
+        return false;
     }
         
 }
