@@ -187,7 +187,11 @@ public class playerState : MonoBehaviour {
 
         double total = GameManager.gameManager.enimesToPlace + GameManager.gameManager.totalBlocksToFill + GameManager.gameManager.totalBlocksToReplace + 2; 
         double comp = GameManager.gameManager.enimesPlaced + GameManager.gameManager.blocksFilled + GameManager.gameManager.blocksReplaced + (GameManager.gameManager.flagLowered ? 1 : 0) + 1;
-        txt.text = "Your score: " + (comp / total) * 100 + "%";
+        double percent = (comp / total) * 100;
+        if(percent < 0){
+            percent = 0;
+        }
+        txt.text = "Your score: " + percent + "%";
     }
 
 }
