@@ -13,9 +13,9 @@ public class InteractableObject : MonoBehaviour {
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public virtual void Interacted() {}
+    public virtual bool Interacted() {return false;}
 
-    public virtual void InteractedFirst() {}
+    public virtual bool InteractedFirst() { return false;}
 
     public float getColliderHeight(){
         float ySize = collider.bounds.extents.y + transform.position.y;

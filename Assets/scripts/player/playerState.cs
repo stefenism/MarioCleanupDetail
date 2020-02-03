@@ -117,13 +117,16 @@ public class playerState : MonoBehaviour {
     public void setCurrentInteractableObject(InteractableObject newInteractable){
         if(currentInteractableObject == null){
             currentInteractableObject = newInteractable;
+            currentInteractableObject.isInteracting = true;
         }
     }
 
     public void clearCurrentInteractableObject(InteractableObject oldInteractable){
         if(currentInteractableObject != null){
-            currentInteractableObject.isInteracting = false;
-            currentInteractableObject = null;
+            if(currentInteractableObject == oldInteractable){
+                currentInteractableObject.isInteracting = false;
+                currentInteractableObject = null;
+            }
         }
     }
     public void removeCurrentPotentialPickup(PickupObject oldPickup){

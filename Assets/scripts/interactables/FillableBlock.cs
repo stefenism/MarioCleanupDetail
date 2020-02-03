@@ -13,7 +13,8 @@ public class FillableBlock : InteractableObject
     public FillItem fillItem = FillItem.coin;
     public enum FillItem{
         coin = 0,
-        mushroom = 1
+        mushroom = 1,
+        start = 2
     }
 
     private void Awake() {
@@ -34,7 +35,7 @@ public class FillableBlock : InteractableObject
         anim.SetBool("full", items.Count == maxCapacity);
     }
 
-    public override void Interacted(){
+    public override bool Interacted(){
         if(items.Count < maxCapacity){
             List<PickupObject> carried = GameManager.gameManager.player.getCarryList();
             if(carried.Count > 0){
@@ -49,6 +50,12 @@ public class FillableBlock : InteractableObject
                         GameManager.gameManager.blocksFilled += 1;
                         audioManager.audioDaddy.playSfx(audioManager.audioDaddy.shroomStarDeposited);
                     }
+                }else if(carried[0].gameObject.TryGetComponent(out star st)){
+                    if(fillItem == FillItem.mushroom){
+                        GameManager.gameManager.blocksFilled += 1;
+                    }
+                } else {
+                    return false;
                 }
                 if(items.Count == maxCapacity){
                     //Close Block animation
@@ -56,14 +63,18 @@ public class FillableBlock : InteractableObject
                     GameManager.gameManager.player.clearCurrentInteractableObject(this);
                     this.transform.GetChild(0).gameObject.SetActive(false);
                 }
+                return true;
             }  
-        }           
+        return false;         
+        }
+        return false;
     }
 
-    public override void InteractedFirst(){
+    public override bool InteractedFirst(){
         if(!isOpen){
             isOpen = true;
             print("Opened Block");
         }
+        return false;
     }
 }

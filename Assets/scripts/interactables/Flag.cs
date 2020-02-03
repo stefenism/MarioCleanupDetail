@@ -12,7 +12,7 @@ public class Flag : InteractableObject
 
     }
 
-    public override void Interacted(){
+    public override bool Interacted(){
         Vector3 currentPos = this.transform.GetChild(1).gameObject.transform.position;
         if(dropDistance > 0f){      
             dropDistance -= 1f;
@@ -20,11 +20,15 @@ public class Flag : InteractableObject
             this.transform.GetChild(1).gameObject.transform.position = currentPos;
             //Play sounds
             audioManager.audioDaddy.playSfx(audioManager.audioDaddy.flagCrank);
-            if(dropDistance == 1f){
+            if(dropDistance == 0f){
                 //Finished Play sounds
                 GameManager.gameManager.flagLowered = true;
+                GameManager.gameManager.player.clearCurrentInteractableObject(this);
+                this.transform.GetChild(3).gameObject.SetActive(false);
             }
+            return true;
         }
+        return false;
     }
 
 }

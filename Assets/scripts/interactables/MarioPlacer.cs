@@ -2,35 +2,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReplaceableBlock : InteractableObject
+public class MarioPlacer : InteractableObject
 {
     // Start is called before the first frame update
-    private bool isReplaced = false;
-
-    public override void Awake() {
-        base.Awake(); 
-    }
-
-    private void Start() {
-         GameManager.gameManager.totalBlocksToReplace++;
-    }
+    private bool isPlaced = false;
 
     public override bool InteractedFirst(){
-        if(!isReplaced){
+        if(!isPlaced){
             if(GameManager.gameManager.player.getCarryList().Count > 0){
-                if(GameManager.gameManager.player.getCarryList()[0].gameObject.TryGetComponent(out ReplaceBlock block)){
-                    isReplaced = true;
+                if(GameManager.gameManager.player.getCarryList()[0].gameObject.TryGetComponent(out Mario block)){
+                    isPlaced = true;
                     print("replaced correctly");
-                    GameManager.gameManager.blocksReplaced += 1;
+                    GameManager.gameManager.placedMario = true;
                     GameManager.gameManager.player.clearCurrentInteractableObject(this);
                     this.transform.GetChild(0).gameObject.SetActive(false);
 
                     //REPLACE SPRITE HERE
+                    //DO GAME END
 
                     return true;
                 }
             }
-        }
-        return false;
+        }   
+        return false;     
     }
 }
