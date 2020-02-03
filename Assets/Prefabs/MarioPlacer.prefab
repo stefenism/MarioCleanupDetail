@@ -70,6 +70,7 @@ GameObject:
   - component: {fileID: 1965338000094596081}
   - component: {fileID: 1965338000094596083}
   - component: {fileID: 5167141578744387593}
+  - component: {fileID: 6023792946337048565}
   m_Layer: 17
   m_Name: MarioPlacer
   m_TagString: Untagged
@@ -203,3 +204,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 1965338000094596083}
   rb: {fileID: 1965338000094596081}
+--- !u!95 &6023792946337048565
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1965338000094596080}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
