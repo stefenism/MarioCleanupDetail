@@ -11,6 +11,17 @@ public class audioManager : MonoBehaviour {
 
     public AudioClip jumpSfx;
     public AudioClip typeWriterSfx;
+    public AudioClip coinDeposit;
+    public AudioClip flagCrank;
+    public AudioClip boxFix;
+    public AudioClip levelComplete;
+    public AudioClip pickupSfx;
+    public AudioClip putDownSfx;
+    public AudioClip shroomStarDeposited;
+    public AudioClip clumsyDropSfx;
+    public AudioClip scissorUp;
+    public AudioClip scissorDown;
+    public AudioClip clockOut;
 
     private void Awake() {
         if(audioDaddy == null){
@@ -25,7 +36,7 @@ public class audioManager : MonoBehaviour {
     public void playSfx(AudioClip playClip){
         print("Playing");
         if(playClip != null){
-            cameraAudioSource.PlayOneShot(playClip, 0.5f);
+            cameraAudioSource.PlayOneShot(playClip, 0.35f);
         }
     }
     
