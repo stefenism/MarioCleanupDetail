@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: marioPlacerOverride
+  m_Controller: {fileID: 9100000, guid: ec54d78f1b79b1c4ca5e3d344ed6d5d1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 1eec2beb13229f849ae1c5172f845249, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 83acdbb123ce4974c8c647c5d2a65b68, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 93621601b63cbd34e8f8b9f42053a0e9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: aa561d5999e84354b9d85dc5ec2170e1, type: 2}
