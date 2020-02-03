@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class playerState : MonoBehaviour {
     
@@ -23,6 +24,9 @@ public class playerState : MonoBehaviour {
 
     public Transform carryPosition;
     public GameObject interactIcon;
+
+    public FadeOut fade;
+    public Text txt;
 
     private void Start() {
         GameManager.gameManager.player = this;
@@ -178,4 +182,14 @@ public class playerState : MonoBehaviour {
     public List<PickupObject> getCarryList(){
         return carriedPickups;
     }
+
+    public void endGame(){
+
+        StartCoroutine(fade.fade());
+
+        double total = GameManager.gameManager.enimesToPlace + GameManager.gameManager.totalBlocksToFill + GameManager.gameManager.totalBlocksToReplace + 2; 
+        double comp = GameManager.gameManager.enimesPlaced + GameManager.gameManager.blocksFilled + GameManager.gameManager.blocksReplaced + (GameManager.gameManager.flagLowered ? 1 : 0) + 1;
+        txt.text = "Your score: " + (comp / total) * 100 + "%";
+    }
+
 }

@@ -35,7 +35,7 @@ public class MarioPlacer : InteractableObject
                     //REPLACE SPRITE HERE
                     filled = true;
                     //DO GAME END
-
+                    GameManager.gameManager.player.endGame();
                     return true;
                 }
             }
