@@ -27,6 +27,8 @@ public class GameManager : MonoBehaviour {
     //TIMER
     public float timeRemaining { get; set; } = 500f;
 
+    public CanvasGroup canvasGroup;
+
     void Awake() {
         if (gameManager == null) {
             gameManager = this;
@@ -44,7 +46,7 @@ public class GameManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-
+        canvasGroup = transform.GetComponent<CanvasGroup>();
     }
 
     // Update is called once per frame
