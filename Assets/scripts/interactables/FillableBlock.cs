@@ -43,10 +43,12 @@ public class FillableBlock : InteractableObject
                 if(carried[0].gameObject.TryGetComponent(out coin c)){
                     if(fillItem == FillItem.coin){
                         GameManager.gameManager.blocksFilled += 1;
+                        audioManager.audioDaddy.playSfx(audioManager.audioDaddy.coinDeposit);
                     }
-                } else if(carried[0].gameObject.TryGetComponent(out shroom mush)){
+                } else if(carried[0].gameObject.TryGetComponent(out shroom boomer)){
                     if(fillItem == FillItem.mushroom){
                         GameManager.gameManager.blocksFilled += 1;
+                        audioManager.audioDaddy.playSfx(audioManager.audioDaddy.shroomStarDeposited);
                     }
                 }else if(carried[0].gameObject.TryGetComponent(out star st)){
                     if(fillItem == FillItem.mushroom){

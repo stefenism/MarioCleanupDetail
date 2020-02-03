@@ -84,6 +84,7 @@ public class playerState : MonoBehaviour {
             for(int i = carriedPickups.Count - 1; i >= index; i--){
                 carriedPickups[i].dropTopPickup();
                 carriedPickups.Remove(carriedPickups[i]);
+                audioManager.audioDaddy.playSfx(audioManager.audioDaddy.clumsyDropSfx);
             }
             carriedPickups.Remove(newPickup);
         }
